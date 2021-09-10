@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "ad.C": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "climits": "cpp",
+        "string": "cpp",
+        "xstring": "cpp",
+        "system_error": "cpp",
+        "xlocale": "cpp"
+    }
+}
