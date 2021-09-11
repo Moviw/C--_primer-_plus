@@ -437,3 +437,4 @@ delete p;      //不要用delete释放由变量分配的内存
 **char类型用cin.getline(数组名,限定长度)来为char数组赋值**
 
 **string类用getline(cin,string变量名)来为string变量赋值**
+
