@@ -100,3 +100,88 @@
 
     他声明了一个a变量,这个变量用来指向含有4个int类型数据的数组,即数组指针
 
+## VI.函数指针
+
+与数据项类似,函数也有地址.函数的地址是储存器机器语言代码的内存的开始地址
+
+可以编写将另一个函数的地址作为参数的函数,这样第一个函数就能找到第二个函数,并运行他
+
+与直接调用另一个函数相比,这种方法更笨拙,但它允许在不同而事件传递不同函数的地址,
+
+### 函数指针的使用:
+- 获取函数的地址
+- 声明一个函数指针
+- 使用函数指针来调用函数
+
+`获取函数的地址`:
+函数名就是函数的地址,但是要区分函数的地址与函数的返回值:
+
+    fun(think);     将think函数地址传递给fun()
+    fun(think());   将think函数返回值传递给fun()
+
+`声明函数指针`:
+声明某种数据类型的指针时,必须指定指针指向的类型
+
+同样的,声明指向函数的指针时,必须指定函数指向的函数类型,也就是指定**函数的返回类型与函数的参数列表**
+
+例如:
+
+    double fun(int);    函数原型
+
+其函数指针应该为:
+
+    double (*pf)(int);
+
+如果不加括号的话:
+
+    double *pf(int);
+
+pf也表示一个函数指针,其参数列表为一个int,但返回值是*double \**
+
+`用指针来调用函数`:
+
+```cpp
+1    double pam(int);
+2    double (*pf)(int);
+3    pf=pam;
+4    double x=pam(4);
+5    double y=pf(4);
+6    double z=(*pf)(4);
+```
+上面代码中,4/5行的调用形式均有效
+
+函数指针数组练习题:
+
+第七章练习题.10
+```cc
+#include <iostream>
+using namespace std;
+double add(double x, double y)
+{
+    return x + y;
+}
+double sub(double x, double y)
+{
+    return x - y;
+}
+double mul(double x, double y)
+{
+    return x * y;
+}
+double calculate(double x, double y, double (*pf)(double, double))
+{
+    return pf(x, y);
+}
+int main()
+{
+    double (*pf[3])(double, double);
+    pf[0] = add;
+    pf[1] = sub;
+    pf[2] = mul;
+    for (int i = 0; i < 3; i++)
+    {
+        cout<<calculate(2,5,pf[i])<<endl;
+    }
+}
+```
+
